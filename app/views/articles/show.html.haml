@@ -1,0 +1,10 @@
+%h1 Showing current article
+%p
+  title:
+  =@article.title
+%p
+  description:
+  =@article.description
+
+=link_to "edit this article", edit_article_path(@article)
+=link_to "back to article lisning", articles_path

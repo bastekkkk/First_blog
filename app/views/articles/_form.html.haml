@@ -1,0 +1,17 @@
+=if @article.errors.any?
+  %h2 the following errors prevented the article from getting created
+  %ul
+    = @article.errors.full_messages.each do |msg| 
+    %li 
+    =msg
+    
+=form_for @article do |d| 
+  %p
+    = d.label :title
+    = d.text_field :title 
+  %p
+    = d.label :description
+    = d.text_area :description
+  = d.submit
+= link_to "back to articles lisning" , articles_path
+    
