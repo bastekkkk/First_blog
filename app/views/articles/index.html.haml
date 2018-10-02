@@ -1,22 +1,16 @@
 %h1 All articles
 %p
   =link_to "crate new article", new_article_path
-%table
-  %tr
-    %th
-    title:
-    %th
-    description:
-  %tr
-    - @articles.each do |b|
-      %td
-      =b.title
-      %td
-      =b.description
-      %td
-      =link_to 'edit' , edit_article_path(b)
-      %td
-      =link_to 'show', article_path(b)
-      %td
-      =link_to 'delete', article_path(b), method: :delete, data: {confirm: "are you sure"}
-=link_to 'back to home', root_path
+%table.table.table-borderless
+  %thead
+    %tr
+      %th{:scope => "col"} #
+      %th{:scope => "col"} Title
+      %th{:scope => "col"} Description
+  %tbody
+  - @articles.each do |d|
+    %tr
+      %td{:scope => "row"}= d.id
+      %td= d.title
+      %td= d.description
+

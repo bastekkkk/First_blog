@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  before_action :find_params, only: [:edit, :update, :destroy, :show]
+  before_action :find_params, only: %i[edit update destroy show]
 
   def index
     @articles = Article.all
@@ -9,9 +9,7 @@ class ArticlesController < ApplicationController
 
   def show; end
 
-  def edit
-  end
-  
+  def edit; end
 
   def new
     @article = Article.new
@@ -32,7 +30,9 @@ class ArticlesController < ApplicationController
       flash[:notice] = 'successfuly created article'
       redirect_to article_path(@article)
     else
-      #puts @article.errors.inspect
+      flash[:notice] = "you could't crate a new article "
+
+      # puts @article.errors.inspect
       render 'new'
     end
   end
