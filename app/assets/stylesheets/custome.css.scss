@@ -1,0 +1,34 @@
+
+@import "bootstrap";
+
+#logo{
+	font-size: 16px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	border-right: 1.5px solid black;
+
+}
+#logo:hover{
+	color: #fff;
+	text-decoration: none;
+	
+}
+
+.flashmessage{
+	border: 1px sold black;
+
+}
+.center{
+	text-align: center;
+	font-size: 35px;
+	letter-spacing: 1.5px;
+	backgroud-color: #f8f9fa;
+}
+
+footer{
+	margin-top: 45px;
+	padding-top: 5px;
+	border-top: 1px solid black;
+	color: #777;
+
+}

@@ -1,9 +1,4 @@
-=if @article.errors.any?
-  %h2 the following errors prevented the article from getting created
-  %ul
-    = @article.errors.full_messages.each do |msg| 
-    %li 
-    =msg
+
     
 =form_for @article do |d| 
   %p

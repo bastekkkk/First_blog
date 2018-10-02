@@ -1,4 +1,5 @@
-=flash.each do |name , msg|
-  %ul
-    %li
-      =msg
+.flashmessage
+  - flash.each do |name , msg|
+    %ul
+      %li
+        =msg 

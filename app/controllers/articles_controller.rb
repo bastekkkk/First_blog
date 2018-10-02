@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   def update
     if @article.update(article_params)
       flash[:notice] = 'successful updated articles'
-      redirect_to article_patch(@article)
+      redirect_to article_path(@article)
     else
       render 'edit'
     end
@@ -30,8 +30,9 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     if @article.save
       flash[:notice] = 'successfuly created article'
-      redirect_to article_patch(@article)
+      redirect_to article_path(@article)
     else
+      #puts @article.errors.inspect
       render 'new'
     end
   end
