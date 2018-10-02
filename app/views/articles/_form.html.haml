@@ -1,17 +1,4 @@
-- if @article.errors.any?
-  .row
-    .col-xs-8.col-xs-offset-2
-      .panel.panel-danger
-        .panel-heading
-          %h2.panel-title
-            = pluralize(@article.errors.count, "error")
-            prohibited this article from begin saved:
-        .panel-body
-          %ul
-          - @article.errors.full_messages.each do |d|
-            %li
-              =d
-
+=render 'shared/errors' , obj: @article
 .row
   .col-md-12.offset-2
     =form_for @article do |d|

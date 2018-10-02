@@ -1,0 +1,9 @@
+- if @article.errors.any?
+  .error_explanation
+    .alert.alert-danger
+      The from contains
+      =pluralize(@article.errors.count, "error")
+      %ul
+      - @article.errors.full_messages.each do |msg|
+        %li
+        = msg
