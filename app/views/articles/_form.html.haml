@@ -3,17 +3,17 @@
   .col-md-12.offset-2
     =form_for @article do |d|
       .form-group
-        .control-label.col-sm-12
+        .control-label.col-sm-12.formsize
           = d.label :title
         .col-sm-8
-          = d.text_field :title, class: "form-control", placeholder: "title of article", autofocus: true
+          = d.text_field :title, class: "form-control", placeholder: "Your title", autofocus: true
         .form-group
-          .control-label.col-sm-12
+          .control-label.col-sm-12.formsize
             = d.label :description
           .col-sm-8
-            = d.text_area :description, class: "form-control", placeholder: "description from article", autofocus: true
+            = d.text_area :description, class: "form-control", placeholder: "Description for your article", autofocus: true
         .form-group
           .col-sm-10
             = d.submit class: "btn btn-primary"
       .col-xs-4.col-xs-offset-4
-        = link_to "back to articles lisning" , articles_path
+        = link_to "back to articles lisning" , articles_path, class: "btn btn-outline-info btn-md"
