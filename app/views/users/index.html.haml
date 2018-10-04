@@ -1,1 +1,10 @@
-= @users.name
+%h1{align:"center"} All Users
+= @users.each do |user|
+  %ul.listnig
+    .row
+      .well.col-md-4.offset-4
+        %li= link_to user.name ,  user_path(user)
+        %li
+          %small=pluralize(user.articles.count, "article") if user.articles
+
+

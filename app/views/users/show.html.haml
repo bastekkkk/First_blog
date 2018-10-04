@@ -1,0 +1,5 @@
+%h1{align: "center"} Welcome to #{@user.name}
+.container
+  .row
+    %h4 #{@user.name}'s articles
+  = render 'articles/article', obj: @user.articles
