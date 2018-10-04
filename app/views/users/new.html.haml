@@ -1,25 +1,2 @@
 %h1{align: "center"} Creater accout
-=render 'shared/errors' , obj: @user
-.row
-  .col-md-12.offset-2
-    =form_for @user do |d|
-      .form-group
-        .control-label.col-sm-12.formsize
-          = d.label :Name
-        .col-sm-8
-          = d.text_field :name, class: "form-control", placeholder: "Name", autofocus: true
-        .form-group
-          .control-label.col-sm-12.formsize
-            = d.label :Email
-          .col-sm-8
-            = d.text_field :email, class: "form-control", placeholder: "Email", autofocus: true
-        .form-group
-          .control-label.col-sm-12.formsize
-            = d.label :Password
-          .col-sm-8
-            = d.password_field :password, class: "form-control", placeholder: "Password", autofocus: true
-        .form-group
-          .col-sm-10
-            = d.submit class: "btn btn-primary"
-      .col-xs-4.col-xs-offset-4
-        = link_to "back to articles lisning" , articles_path, class: "btn btn-outline-info btn-md"
+=render 'users/form'
