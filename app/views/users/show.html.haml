@@ -2,4 +2,7 @@
 .container
   .row
     %h4 #{@user.name}'s articles
+    .center
+    =will_paginate @user_article
   = render 'articles/article', obj: @user.articles
+

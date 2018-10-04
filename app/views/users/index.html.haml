@@ -1,4 +1,6 @@
 %h1{align:"center"} All Users
+.center
+  =will_paginate
 = @users.each do |user|
   %ul.listnig
     .row
@@ -6,5 +8,5 @@
         %li= link_to user.name ,  user_path(user)
         %li
           %small=pluralize(user.articles.count, "article") if user.articles
-
-
+.center
+  =will_paginate
