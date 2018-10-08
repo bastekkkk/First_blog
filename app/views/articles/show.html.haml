@@ -3,8 +3,12 @@
   %h4.center
   %strong Description:
   =simple_format(@article.description)
+  .userinfo
+  %h5 Created at: #{@article.created_at}
+  %h5 by: #{@article.user.name}
   .article-actions
     .mysection
-      =link_to "Edit this article", edit_article_path(@article), class: "btn btn-xs btn-primary"
-      =link_to "Delete this article", article_path(@article), method: :delete, data: {confirm: "are you sure? "}, class: "btn btn-md btn-danger"
-      =link_to "Back to articles listning", articles_path(@article), class: "btn btn-md btn-info"
+      - if logged_in? && current_user == @article.user
+        =link_to "Edit this article", edit_article_path(@article), class: "btn btn-xs btn-primary"
+        =link_to "Delete this article", article_path(@article), method: :delete, data: {confirm: "are you sure? "}, class: "btn btn-md btn-danger"
+        =link_to "Back to articles listning", articles_path(@article), class: "btn btn-md btn-info"
