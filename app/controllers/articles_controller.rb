@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  before_action :find_params, only: %i[edit update destroy show]
+  before_action :find_params, only: [:edit, :show , :update, :destroy]
+  before_action :require_user, except: [:index, :show]
 
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 5)
+    @articles = Article.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
 
   def show; end
@@ -26,7 +27,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = current_user
     if @article.save
       flash[:success] = 'successfuly created article'
       redirect_to article_path(@article)

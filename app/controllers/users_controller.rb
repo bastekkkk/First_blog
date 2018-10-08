@@ -2,14 +2,15 @@
 
 class UsersController < ApplicationController
 
-#before_action :find_params,  only: [:show, :create, :edit, :update]
+before_action :set_user,  only: [:show, :create, :edit, :update]
+before_action :require_user
 
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     @user_article = @user.articles.paginate(page: params[:page], per_page: 2)
   end
 
@@ -30,11 +31,11 @@ class UsersController < ApplicationController
 end
 
     def edit
-      @user = User.find(params[:id])
+      #@user = User.find(params[:id])
     end
 
     def update
-      @user = User.find(params[:id])
+      #@user = User.find(params[:id])
       if @user.update(user_params)
         flash[:success] = "Successfuly updated"
         redirect_to articles_path
@@ -51,7 +52,7 @@ end
     params.require(:user).permit(:name, :email, :password)
   end
 
-  def find_params
+  def set_user
     @user = User.find(params[:id])
   end
 

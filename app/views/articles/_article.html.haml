@@ -6,5 +6,5 @@
           =link_to "Title: #{article.title}", article_path(article)
         .article-body
           =truncate("Description: #{article.description}", length: 100)
-          %small Created by: #{article.user&.name}
+          %small Created by: #{article.user.name}
           = article.created_at
