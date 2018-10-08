@@ -3,8 +3,8 @@
 class UsersController < ApplicationController
 
 before_action :set_user,  only: [:show, :create, :edit, :update]
-before_action :require_user
-
+#before_action :require_user 
+before_action :require_user, except: [:create, :show]
   def new
     @user = User.new
   end
