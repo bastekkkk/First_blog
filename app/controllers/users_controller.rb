@@ -2,9 +2,10 @@
 
 class UsersController < ApplicationController
 
-before_action :set_user,  only: [:show, :create, :edit, :update]
+before_action :set_user,  only: [:show, :edit, :update]
+before_action :require_same_user , only: [:edit, :update]
 #before_action :require_user 
-before_action :require_user, except: [:create, :show]
+#before_action :require_user, except: [:show , :idex]
   def new
     @user = User.new
   end
@@ -23,8 +24,9 @@ before_action :require_user, except: [:create, :show]
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = 'Successfuly created user'
-      redirect_to articles_path
+      redirect_to user_path(@user)
     else
       render 'new'
   end
@@ -71,5 +73,15 @@ end
   def set_user
     @user = User.find(params[:id])
   end
+
+  
+
+  def require_same_user
+    if !logged_in? && current_user != @user
+      flash[:danger]= "You can only edit own accout"
+      redirect_to root_path
+    end
+  end
+
 
 end

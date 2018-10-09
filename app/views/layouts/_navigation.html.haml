@@ -12,6 +12,7 @@
         %li.nav-item.dropdown
           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Setting
+            ="admin" if current_user.admin?
           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
             =link_to "new Article", new_article_path, class: "dropdown-item"
             %a.dropdown-item
