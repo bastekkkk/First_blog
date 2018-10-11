@@ -8,5 +8,8 @@
         %li= link_to user.name ,  user_path(user)
         %li
           %small=pluralize(user.articles.count, "article") if user.articles
+        %li
+          - if logged_in? and current_user.admin?
+            = link_to "delete user", user_path(user), method: :delete, data: {confirm: "are you sure ?"}
 .center
   =will_paginate

@@ -2,9 +2,10 @@
 
 class UsersController < ApplicationController
 
-before_action :set_user,  only: [:show, :create, :edit, :update]
-#before_action :require_user 
-before_action :require_user, except: [:create, :show]
+before_action :set_user,  only: [:show, :edit, :update]
+before_action :require_same_user , only: [:edit, :update, :destroy]
+before_action :require_admin , only: [:destroy]
+
   def new
     @user = User.new
   end
@@ -18,13 +19,23 @@ before_action :require_user, except: [:create, :show]
     @users = User.paginate(page: params[:page], per_page: 2)
   end
 
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy 
+    flash[:danger] = "successfuly has been daleted accout with us articles"
+    redirect_to users_path
+  end
+
+
 
 
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = 'Successfuly created user'
-      redirect_to articles_path
+      redirect_to user_path(@user)
     else
       render 'new'
   end
@@ -71,5 +82,23 @@ end
   def set_user
     @user = User.find(params[:id])
   end
+
+  
+
+  def require_same_user
+    if current_user != @user and !current_user.admin?
+      flash[:danger]= "You can only edit own accout"
+      redirect_to root_path
+    end
+  end
+
+ def require_admin
+  if logged_in? and !current_user.admin?
+    flash[:danger] = "only admin can deleted anything"
+    redirect_to root_path
+end
+
+ end
+
 
 end
