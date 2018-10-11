@@ -1,2 +1,16 @@
-%h1 Categories#new
-%p Find me in app/views/categories/new.html.haml
+%h1{align: "center"} Create a new category
+=render 'shared/errors' , obj: @category
+.row
+  .col-md-12.offset-2
+    =form_for @category do |d|
+      .form-group
+        .control-label.col-sm-12.formsize
+          = d.label :name
+        .col-sm-8
+          = d.text_field :name, class: "form-control", placeholder: "Category", autofocus: true
+        .form-group
+          .col-sm-10
+            = d.submit "create" ,class: "btn btn-primary"
+      .col-xs-4.col-xs-offset-4
+        = link_to "back to articles lisning" , articles_path, class: "btn btn-outline-info btn-md"
+
