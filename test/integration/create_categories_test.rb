@@ -23,7 +23,6 @@ end
 		
 	end
 	assert_template 'categories/new'
-	assert_select 'alert.alert-danger'
  end
 
 
