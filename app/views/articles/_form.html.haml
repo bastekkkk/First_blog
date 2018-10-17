@@ -12,6 +12,11 @@
             = d.label :description
           .col-sm-8
             = d.text_area :description, class: "form-control", placeholder: "Description for your article", autofocus: true
+          .form-group
+            .row
+              .col-sm-10.offset-2
+                = d.collection_check_boxes :category_ids, Category.all, :id, :name do |cd|
+                  - cd.label(class: "checkbox-inline input_checkbox") {cd.check_box(class: "checkbox") + cd.text}
         .form-group
           .col-sm-10
             = d.submit class: "btn btn-primary"
